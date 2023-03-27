@@ -3,40 +3,57 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // This is the theme of your application.
         primarySwatch: Colors.blue,
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
-}
+} //mi app
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  _MyHomePageState createState() => _MyHomePageState();
+} //MyHomePage
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
+            indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(50), // Creates border
+                color: Colors.greenAccent),
+            tabs: [
+              Tab(icon: Icon(Icons.fastfood)),
+              Tab(icon: Icon(Icons.money)),
+              Tab(icon: Icon(Icons.food_bank_sharp)),
+              Tab(icon: Icon(Icons.add_shopping_cart_sharp)),
+            ],
+          ),
+          title: Text('Tabs Demo'),
+        ),
+        body: TabBarView(
+          children: [
+            Icon(Icons.fastfood, size: 350),
+            Icon(Icons.money, size: 350),
+            Icon(Icons.food_bank_sharp, size: 350),
+            Icon(Icons.add_shopping_cart_sharp, size: 350),
+          ],
         ),
       ),
     );
   }
-}
+} //_MyHomePageState
